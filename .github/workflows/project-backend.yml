@@ -50,6 +50,6 @@ jobs:
         run: |
           PROJECT_NAME=graphql
           cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME
-          ./common-api/reparent.sh
+          cd common-api/ && ./reparent.sh && cd ../
           mvn clean package -DskipTests=true
 
