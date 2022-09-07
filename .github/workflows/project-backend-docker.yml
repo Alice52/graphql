@@ -48,16 +48,16 @@ jobs:
 
       - name: Build Project
         run: |
-          cd $PROJECT_HOME/$PROJECT_PREFIX/
-          ./reparent.sh
+          PROJECT_NAME=graphql
+          cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME
+          ./common-api/reparent.sh
           mvn clean package -DskipTests=true
 
-      - name: Push project-cloud-custom-basic Image
+      - name: Push Graphql Image
         run: |
-          MODULE_NAME=custom-basic-biz
-          mkdir -p $PROJECT_HOME/$PROJECT_PREFIX/$MODULE_NAME_PREFIX/$MODULE_NAME/target
-          mv custom-basic.jar $PROJECT_HOME/$PROJECT_PREFIX/$MODULE_NAME_PREFIX/$MODULE_NAME/target
-          cd $PROJECT_HOME/$PROJECT_PREFIX/$MODULE_NAME_PREFIX/$MODULE_NAME/
+          PROJECT_NAME=graphql
+          MODULE_NAME=graphql-test
+          cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME/$MODULE_NAME/
           image=$IMAGE_PREFIX-$MODULE_NAME:${TAG}
           docker build -f Dockerfile --build-arg MODULE_NAME=$MODULE_NAME --build-arg JASYPT_ENCRYPTOR_PASSWORD=$JASYPT_ENCRYPTOR_PASSWORD -t ${image} .
           docker login --username=$ALI_DOCKER_USERNAME --password=$ALI_DOCKER_PASSWORD $ALI_DOCKER_REGISTRY

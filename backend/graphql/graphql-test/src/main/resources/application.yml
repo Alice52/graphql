@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    # this sequence is master
+    include: dev

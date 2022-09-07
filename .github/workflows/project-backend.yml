@@ -38,6 +38,7 @@ jobs:
           echo "JASYPT_ENCRYPTOR_PASSWORD=${{ secrets.JASYPT_ENCRYPTOR_PASSWORD }}" >> $GITHUB_ENV
           echo "PROJECT_HOME=$PWD" >> $GITHUB_ENV
           echo "TAG=`echo \`date +%Y%m%d\`.${GITHUB_SHA} | cut -c1-16`" >> $GITHUB_ENV
+
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -45,19 +46,10 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build project-cloud-custom module
+      - name: Build Project
         run: |
-
-          PROJECT_NAME=project-cloud-custom
+          PROJECT_NAME=graphql
           cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME
-          rm ./common-api/pom.xml
-          mv ./common-api/pom.xml.dev ./common-api/pom.xml
+          ./common-api/reparent.sh
           mvn clean package -DskipTests=true
-
-      - name: Upload Custom Basic Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: custom-basic.jar
-          path: ${{ github.workspace }}/**/custom-basic-*.jar
-          retention-days: 1
 
