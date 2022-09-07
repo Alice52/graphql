@@ -3,7 +3,7 @@ name: Build Image Project-Custom-Cloud
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'backend/graphql/**'
       - '.github/workflows/docker-project-cloud-backend.yml'
