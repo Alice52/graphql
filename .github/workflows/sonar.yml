@@ -52,13 +52,6 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build Project
-        run: |
-          PROJECT_NAME=graphql
-          cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME
-          cd common-api/ && ./reparent.sh && cd ../
-          mvn clean package -DskipTests=true
-
       - name: Run SonarQube Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
