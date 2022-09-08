@@ -50,7 +50,7 @@
         <actuator.admin.version>2.2.4</actuator.admin.version>
         <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
         <cloud.alibaba.version>2.1.0.RELEASE</cloud.alibaba.version>
-        <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
+        <security.oauth.version>2.3.6.RELEASE</security.oauth.version>
 
         <!-- jackson -->
         <jackson.modules>2.9.8</jackson.modules>
