@@ -5,3 +5,11 @@ spring:
   profiles:
     # this sequence is master
     include: dev
+
+dgs:
+  graphql:
+    graphiql:
+      path: graphiql
+    schema-json:
+      path: schema.json
+    path: /graphql
