@@ -15,7 +15,7 @@
 
 
     <properties>
-        <graphql.version>4.1.0</graphql.version>
+        <graphql.version>4.10.5</graphql.version>
 
         <!--  #region  ====================== common version =====================    -->
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
