@@ -2,14 +2,9 @@ server:
   port: 8081
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
   profiles:
     # this sequence is master
     include: dev
-
-dgs:
-  graphql:
-    graphiql:
-      path: graphiql
-    schema-json:
-      path: schema.json
-    path: /graphql
