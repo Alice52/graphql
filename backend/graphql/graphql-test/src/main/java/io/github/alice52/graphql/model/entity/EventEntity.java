@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,6 +19,7 @@ import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 public class EventEntity {
     @TableId(type = AUTO)
     private Integer id;
+
     private String title;
     private String description;
     private Float price;

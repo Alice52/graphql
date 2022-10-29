@@ -19,8 +19,7 @@ import java.util.List;
 @DgsComponent
 public class EventFetcher {
 
-    @Resource
-    private EventService eventService;
+    @Resource private EventService eventService;
 
     @DgsQuery
     public List<EventEntity> events() {

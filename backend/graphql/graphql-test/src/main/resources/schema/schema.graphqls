@@ -1,22 +1,22 @@
 type Query {
-  events: [Event!]!
+    events: [Event!]!
 }
 
 type Mutation {
-  createEvent(eventInput: EventInput!): Event!
+    createEvent(eventInput: EventInput!): Event!
 }
 
 input EventInput {
-  title: String!
-  description: String!
-  price: Float!
-  date: String!
+    title: String!
+    description: String!
+    price: Float!
+    date: String!
 }
 
 type Event {
-  id: ID!
-  title: String!
-  description: String!
-  price: Float!
-  date: String!
+    id: ID!
+    title: String!
+    description: String!
+    price: Float!
+    date: String!
 }

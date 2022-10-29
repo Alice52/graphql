@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EventServiceImpl extends ServiceImpl<EventEntityMapper, EventEntity> implements EventService {
+public class EventServiceImpl extends ServiceImpl<EventEntityMapper, EventEntity>
+        implements EventService {
 
     @Override
     public List<EventEntity> events() {
@@ -21,7 +22,13 @@ public class EventServiceImpl extends ServiceImpl<EventEntityMapper, EventEntity
     @Override
     public EventEntity createEvent(EventInputDto dto) {
 
-        EventEntity entity = EventEntity.builder().price(dto.getPrice()).title(dto.getTitle()).description(dto.getDescription()).date(LocalDateTimeUtil.parse(dto.getDate())).build();
+        EventEntity entity =
+                EventEntity.builder()
+                        .price(dto.getPrice())
+                        .title(dto.getTitle())
+                        .description(dto.getDescription())
+                        .date(LocalDateTimeUtil.parse(dto.getDate()))
+                        .build();
 
         save(entity);
 
