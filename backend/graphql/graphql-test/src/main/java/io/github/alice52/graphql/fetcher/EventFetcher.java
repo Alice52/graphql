@@ -1,11 +1,14 @@
 package io.github.alice52.graphql.fetcher;
 
-import com.google.common.collect.Lists;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsMutation;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
+import io.github.alice52.graphql.model.dto.EventInputDto;
+import io.github.alice52.graphql.model.entity.EventEntity;
+import io.github.alice52.graphql.service.EventService;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,15 +19,18 @@ import java.util.List;
 @DgsComponent
 public class EventFetcher {
 
-    @DgsQuery
-    public List<String> events() {
+    @Resource
+    private EventService eventService;
 
-        return Lists.newArrayList("Reading", "Cooking", "Watch");
+    @DgsQuery
+    public List<EventEntity> events() {
+
+        return eventService.events();
     }
 
     @DgsMutation
-    public String createEvent(@InputArgument String name) {
+    public EventEntity createEvent(@InputArgument("eventInput") EventInputDto dto) {
 
-        return name + " Created";
+        return eventService.createEvent(dto);
     }
 }

@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: ENC(3+5Pg+H9L0s1ATmg/xTWLbNt9OeMFguochuRyTl9a4BGbD4lL2SLM8351rdHYhC2)
+    password: ENC(MkGdNTchUL+OnF+nvm5YSSjWc7XeHLNab+KV9Wr3fqF1fAbEVLB2urZotLn8nAk1)
+    url: ENC(8DUI7rEmUyVYaLduyEPrJP4Sg1l3GARmtOgXU+MYl2ecrthaxRaDkfKIDx6JuKXEr7IvFS3rwBCCtcK2UehvZcGG86EcGmYwzqj1afzGnkEE2tKDJQ8gb7/Lw1izFB4lQNVuqI6kvkayAVx0NJpemttWJ0d2ikEZ4XU/cxCkKK/3nlhIxHjrIoqucQ5TGLljieV8OH92GcBnCirQeCPp69AMvPj/QhN8OKpXn0+iPChmozrOOTzwdaSAYQMjS/Iiwhh0BxGyHKSHDrdwXbKEIV71C18B2EwuQiIL3o899tuQwLJbA0Mw07v/kfsnSPkJz7CfgAdtq6ft8MXIvZ5yOvaLrb5Ex8MHLhn74J0KYCtfoQxFlQPFhPZ068ArFMtyZ4NItwQo0dXi9SHrd3Mo3G/yCHv5LTgHBftb8YoNU7Q=)
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 20
+
+common:
+  global:
+    database:
+      sensitive: false
