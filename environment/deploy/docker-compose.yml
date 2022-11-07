@@ -15,7 +15,7 @@ services:
       TZ: Asia/Shanghai
 
   dev-graphql-dgs:
-    image: registry.cn-shanghai.aliyuncs.com/alice52/graphql-graphql-test:20221xx.xxxx
+    image: registry.cn-shanghai.aliyuncs.com/alice52/graphql-graphql-dgs-test:20221107.ae513aa
     restart: 'on-failure:3'
     container_name: dev-graphql-dgs
     volumes:

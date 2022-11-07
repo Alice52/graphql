@@ -40,7 +40,7 @@
                         graphql spec
    ```
 
-## graphql & restful & soap & rpc
+## graphql & restful & soap
 
 1. restful: 无状态的数据交换功能的设计风格, 但是在应用领域模型超复杂时具有很大弊端
 
@@ -61,3 +61,14 @@
 3. https://mp.weixin.qq.com/s/d3DNfcyBjb8ayKq5AcvePQ
 
 ## rpc & http
+
+---
+
+## reference
+
+1. [framework](https://github.com/Alice52/graphql/issues/3)
+2. [pros & cons](https://github.com/Alice52/graphql/issues/51)
+3. [github graphql api](https://docs.github.com/en/graphql)
+   - [dependency](https://ivangoncharov.github.io/graphql-voyager/)
+   - [migrating](https://docs.github.com/en/graphql/guides/migrating-from-rest-to-graphql)
+4. [graphql introduce](https://blog.csdn.net/u012206617/article/details/125330474)
