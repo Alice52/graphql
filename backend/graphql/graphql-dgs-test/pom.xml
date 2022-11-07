@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>graphql-test</artifactId>
+    <artifactId>graphql-dgs-test</artifactId>
 
     <dependencies>
         <dependency>

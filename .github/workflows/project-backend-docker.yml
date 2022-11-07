@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'backend/graphql/**'
-      - '.github/workflows/docker-project-cloud-backend.yml'
+      - '.github/workflows/project-backend-docker.yml'
   pull_request:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, '[image]')"
     env: # define constant
-      PROJECT_PREFIX: backend/graphql
+      PROJECT_PREFIX: backend
       IMAGE_PREFIX: graphql
 
     steps:
@@ -56,7 +56,7 @@ jobs:
       - name: Push Graphql Image
         run: |
           PROJECT_NAME=graphql
-          MODULE_NAME=graphql-test
+          MODULE_NAME=graphql-dgs-test
           cd $PROJECT_HOME/$PROJECT_PREFIX/$PROJECT_NAME/$MODULE_NAME/
           image=$IMAGE_PREFIX-$MODULE_NAME:${TAG}
           docker build -f Dockerfile --build-arg MODULE_NAME=$MODULE_NAME --build-arg JASYPT_ENCRYPTOR_PASSWORD=$JASYPT_ENCRYPTOR_PASSWORD -t ${image} .

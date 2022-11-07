@@ -1,13 +1,27 @@
 version: '3.0'
 services:
-  project-worklow:
-    image: registry.cn-shanghai.aliyuncs.com/alice52/practice-custom-test:20210608.09ec081
+  mysql-master-v8:
+    image: mysql:8.0
     restart: 'on-failure:3'
-    container_name: dev-project-worklow
-    volumes:
-      - /root/project-name/logs:/log
+    container_name: dev-mysql-master-v8
     ports:
-      - 8010:8080
+      - 3306:3306
+    volumes:
+      - /root/mysql/v8/logs:/var/log/mysql
+      - /root/mysql/v8/data:/var/lib/mysql
+    command: --skip-innodb-adaptive-hash-index --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --max_allowed_packet=128M --sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      TZ: Asia/Shanghai
+
+  dev-graphql-dgs:
+    image: registry.cn-shanghai.aliyuncs.com/alice52/graphql-graphql-test:20221xx.xxxx
+    restart: 'on-failure:3'
+    container_name: dev-graphql-dgs
+    volumes:
+      - /root/dev-graphql-dgs/logs:/logs
+    ports:
+      - 8090:8080
     environment:
       - TZ=Asia/Shanghai
-      - spring.profiles.active=cloud
+      - jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD}
