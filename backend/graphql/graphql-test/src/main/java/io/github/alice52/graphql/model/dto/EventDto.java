@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EventInputDto {
+public class EventDto {
     private String title;
     private String description;
     private Float price;
     private String date;
+    private Integer userId;
 }

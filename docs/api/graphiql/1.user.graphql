@@ -1,0 +1,21 @@
+# 1. 创建用户
+mutation {
+  createUser(userDto: { email: "zzhang_xz3@163.com", password: "1232" }) {
+    id
+    events {
+      id
+    }
+  }
+}
+
+# 2. 查询用户
+query {
+  users {
+    id
+    email
+    password
+    events {
+      id
+    }
+  }
+}

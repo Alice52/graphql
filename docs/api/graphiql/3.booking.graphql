@@ -1,0 +1,38 @@
+# 1. 订阅事件
+mutation {
+  bookEvent(eventId: 1, userId: 1) {
+    id
+    event {
+      id
+      description
+      price
+    }
+    user {
+      id
+      email
+    }
+  }
+}
+
+# 2. 查询所有订阅
+query {
+  bookings {
+    id
+    event {
+      id
+      description
+      price
+    }
+    user {
+      id
+      email
+    }
+  }
+}
+
+# 3. 取消订阅
+mutation {
+  cancelBooking(bookingId: 3) {
+    id
+  }
+}

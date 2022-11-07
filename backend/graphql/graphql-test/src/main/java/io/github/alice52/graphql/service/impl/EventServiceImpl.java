@@ -1,37 +1,48 @@
 package io.github.alice52.graphql.service.impl;
 
-import cn.hutool.core.date.LocalDateTimeUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.alice52.graphql.mapper.EventEntityMapper;
-import io.github.alice52.graphql.model.dto.EventInputDto;
+import io.github.alice52.graphql.model.dto.EventDto;
 import io.github.alice52.graphql.model.entity.EventEntity;
+import io.github.alice52.graphql.model.vo.EventVo;
 import io.github.alice52.graphql.service.EventService;
+import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventServiceImpl extends ServiceImpl<EventEntityMapper, EventEntity>
         implements EventService {
 
     @Override
-    public List<EventEntity> events() {
-        return lambdaQuery().list();
+    public List<EventVo> events() {
+        return lambdaQuery().list().stream().map(EventVo::new).collect(Collectors.toList());
     }
 
     @Override
-    public EventEntity createEvent(EventInputDto dto) {
+    public EventVo createEvent(EventDto dto) {
 
-        EventEntity entity =
-                EventEntity.builder()
-                        .price(dto.getPrice())
-                        .title(dto.getTitle())
-                        .description(dto.getDescription())
-                        .date(LocalDateTimeUtil.parse(dto.getDate()))
-                        .build();
+        val po = new EventEntity(dto);
+        save(po);
 
-        save(entity);
+        return new EventVo(po);
+    }
 
-        return entity;
+    @Override
+    public List<EventVo> listByUserId(Integer userId) {
+
+        return lambdaQuery().eq(EventEntity::getUserId, userId).list().stream()
+                .map(EventVo::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public EventVo getById(Integer id) {
+
+        EventEntity one = lambdaQuery().eq(EventEntity::getId, id).one();
+
+        return new EventVo(one);
     }
 }

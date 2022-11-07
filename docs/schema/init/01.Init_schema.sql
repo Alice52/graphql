@@ -1,4 +1,3 @@
-
 CREATE TABLE if not exists user (
     id SERIAL,
     email varchar(100) NOT NULL,
@@ -6,17 +5,17 @@ CREATE TABLE if not exists user (
     primary key (id)
 );
 
-CREATE TABLE if not exists  event (
+CREATE TABLE if not exists event (
     id SERIAL,
     title varchar(100) NOT NULL,
     description varchar(255) NOT NULL,
     price float not null,
     date timestamp not null,
-    creator_id integer not null,
+    user_id integer not null,
     primary key (id)
 );
 
-CREATE TABLE if not exists  booking (
+CREATE TABLE if not exists booking (
     id SERIAL,
     user_id integer not null,
     event_id integer not null,

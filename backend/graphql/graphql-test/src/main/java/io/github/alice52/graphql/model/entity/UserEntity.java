@@ -1,17 +1,14 @@
 package io.github.alice52.graphql.model.entity;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.alice52.graphql.model.dto.EventDto;
+import io.github.alice52.graphql.model.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-
-import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
 /**
  * @author zack
@@ -20,19 +17,15 @@ import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "event")
-public class EventEntity {
-    @TableId(type = AUTO)
+@TableName(value = "user")
+public class UserEntity {
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private String title;
-    private String description;
-    private Float price;
-    private LocalDateTime date;
+    private String email;
+    private String password;
 
-    private Integer userId;
-
-    public EventEntity(EventDto dto) {
+    public UserEntity(UserDto dto) {
         BeanUtil.copyProperties(dto, this);
     }
 }

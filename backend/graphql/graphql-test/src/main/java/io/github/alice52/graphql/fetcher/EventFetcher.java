@@ -1,15 +1,16 @@
 package io.github.alice52.graphql.fetcher;
 
-import com.netflix.graphql.dgs.DgsComponent;
-import com.netflix.graphql.dgs.DgsMutation;
-import com.netflix.graphql.dgs.DgsQuery;
-import com.netflix.graphql.dgs.InputArgument;
-import io.github.alice52.graphql.model.dto.EventInputDto;
-import io.github.alice52.graphql.model.entity.EventEntity;
+import com.google.common.collect.Lists;
+import com.netflix.graphql.dgs.*;
+import io.github.alice52.graphql.model.dto.EventDto;
+import io.github.alice52.graphql.model.vo.BookingVo;
+import io.github.alice52.graphql.model.vo.EventVo;
+import io.github.alice52.graphql.model.vo.UserVo;
 import io.github.alice52.graphql.service.EventService;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author zack <br>
@@ -22,14 +23,36 @@ public class EventFetcher {
     @Resource private EventService eventService;
 
     @DgsQuery
-    public List<EventEntity> events() {
+    public List<EventVo> events() {
 
         return eventService.events();
     }
 
     @DgsMutation
-    public EventEntity createEvent(@InputArgument("eventInput") EventInputDto dto) {
+    public EventVo createEvent(@InputArgument("eventDto") EventDto dto) {
 
         return eventService.createEvent(dto);
+    }
+
+    @DgsData(parentType = "UserVo", field = "events")
+    public List<EventVo> eventsByUser(DgsDataFetchingEnvironment dfe) {
+        UserVo user = dfe.getSource();
+
+        if (Objects.isNull(user)) {
+            return Lists.newArrayList();
+        }
+
+        return eventService.listByUserId(user.getId());
+    }
+
+    @DgsData(parentType = "BookingVo", field = "event")
+    public EventVo eventById(DgsDataFetchingEnvironment dfe) {
+        BookingVo booking = dfe.getSource();
+
+        if (Objects.isNull(booking)) {
+            return null;
+        }
+
+        return eventService.getById(booking.getEventId());
     }
 }

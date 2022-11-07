@@ -1,22 +1,54 @@
+# idempotent request
 type Query {
-    events: [Event!]!
+    events: [EventVo!]!
+    users: [UserVo!]!
+    bookings: [BookingVo!]!
 }
 
+# modify request
 type Mutation {
-    createEvent(eventInput: EventInput!): Event!
+    createEvent(eventDto: EventDto!): EventVo!
+    createUser(userDto: UserDto!): UserVo!
+    bookEvent(eventId: ID!, userId: ID!): BookingVo!
+    cancelBooking(bookingId: ID!): EventVo
 }
 
-input EventInput {
+# for create event
+input EventDto {
     title: String!
     description: String!
     price: Float!
     date: String!
+    userId: ID!
 }
 
-type Event {
+# for create user
+input UserDto {
+    email: String!
+    password: String!
+}
+
+type UserVo {
+    id: ID!
+    email: String!
+    password: String
+    events: [EventVo!]
+    bookings: [BookingVo!]
+}
+
+type EventVo {
     id: ID!
     title: String!
     description: String!
     price: Float!
     date: String!
+    user: UserVo
+}
+
+type BookingVo {
+    id: ID!
+    event: EventVo!
+    user: UserVo!
+    createdAt: String!
+    updatedAt: String!
 }
