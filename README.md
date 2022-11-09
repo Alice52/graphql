@@ -38,4 +38,4 @@
 
 ## reference
 
-1. [dgs-code](https://github.com/spring2o/graphql_event_app)
+1. [dgs-code](https://github.com/spring2go/graphql_event_app)
