@@ -1,3 +1,12 @@
+## tech
+
+1. mysql
+2. spring boot
+3. mybatis-plus
+4. graphql: dgs
+
+---
+
 ## backend
 
 1. project domain model
