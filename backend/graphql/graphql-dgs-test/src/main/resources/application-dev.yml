@@ -8,7 +8,18 @@ spring:
     hikari:
       maximum-pool-size: 20
 
+sls:
+  endpoint: cn-shanghai.log.aliyuncs.com
+  access-key-id: ${SLS_ACCESS_ID}
+  access-key-secret: ${SLS_ACCESS_SECRET}
+  project: tims-cms-service-local
+  log-store: tims-cms-service-local-logstore
+  topic: ${spring.application.name}
+
 common:
   global:
     database:
       sensitive: false
+
+logging:
+  config: classpath:logback-dev.xml
