@@ -12,7 +12,7 @@
     <artifactId>graphql-dgs-test</artifactId>
 
     <properties>
-        <protobuf.java.version>2.5.0</protobuf.java.version>
+        <protobuf.java.version>3.16.3</protobuf.java.version>
         <aliyun.logback.version>0.1.18</aliyun.logback.version>
     </properties>
 
