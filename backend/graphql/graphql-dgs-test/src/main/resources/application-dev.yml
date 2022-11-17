@@ -19,6 +19,7 @@ sls:
   project: tims-cms-service-local
   log-store: tims-cms-service-local-logstore
   topic: ${spring.application.name}
+  level: INFO
 
 common:
   global:
@@ -26,4 +27,4 @@ common:
       sensitive: false
 
 logging:
-  config: classpath:logback-dev.xml
+  config: classpath:logback-spring.xml
